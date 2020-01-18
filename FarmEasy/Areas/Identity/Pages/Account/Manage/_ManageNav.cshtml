@@ -3,6 +3,11 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
+<style>
+    .nav-pills .nav-link{border-radius:.25rem}
+    .nav-pills .nav-link.active,.nav-pills .show>.nav-link{color:#fff;background-color:#007bff}
+    .flex-column{-ms-flex-direction:column!important;flex-direction:column!important}
+</style>
 <ul class="nav nav-pills flex-column">
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
