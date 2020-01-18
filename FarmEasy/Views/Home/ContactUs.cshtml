@@ -1,0 +1,109 @@
+﻿<html>
+@{
+    ViewData["Title"] = "Contact Us";
+}
+<h3>@ViewData["Title"]</h3>
+
+<p>Use this page to detail your site's Contact Us.</p>
+<body>
+
+
+<section class="contact-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                <div class="contact-us-section">
+                    <h4>Send Your Request</h4>
+                    <form action="inc/sendemail.php" class="theme-form-two form-validation" autocomplete="off">
+                        <textarea placeholder="Message" name="message"></textarea>
+                        <input type="text" placeholder="Subject" name="sub">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <input type="text" placeholder="Name" name="name">
+                            </div><!-- /.col -->
+                            <div class="col-md-6 col-sm-12">
+                                <input type="email" placeholder="Email" name="email">
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        <div class="buttonDiv">
+                            <button class="hvr-shutter-out-horizontal-two round-border">Submit Text</button>
+                        </div><!-- /buttonDiv -->
+                    </form> <!-- /.theme-form-two -->
+                    <!--Contact Form Validation Markup -->
+                    <!-- Contact alert -->
+
+                </div><!-- /.error -->
+            </div> <!-- End of .alert-wrapper -->
+        </div><!-- /.contact-us-section -->
+    </div><!-- /.col -->
+
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="single-list">
+            <div class="contact-single-list">
+                <ul>
+                    <li><a href="#" class=""><i class="fa fa-phone" aria-hidden="true"></i> ( +88 ) 01912704281</a></li>
+                    <li><a href="#" class=""><i class="fa fa-envelope-o" aria-hidden="true"></i>help@gmail.com</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a>123 Fake Street- Panama Road, 12/1, London</li>
+                    <li>Brooklyn, NY 10036, Road victor United States</li>
+                </ul>
+            </div> <!-- /contact-single-list -->
+            <div class="social-icon">
+                <h6>Social touch</h6>
+                <ul>
+                    <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="hvr-shutter-out-horizontal-three"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                </ul>
+            </div> <!-- /.social-icon -->
+        </div><!-- /.single-list -->
+    </div><!-- /.col -->
+   
+</section><!-- /.contact-section -->
+<!--
+=============================================
+partners section
+==============================================
+-->
+@*<div class="partners-section">
+    <div class="container">
+        <div class="row">
+            <div id="partners" class="owl-carousel owl-theme owl-partners">
+                <div class="item"><img src="images/logo/prtn-logo-1.png" alt="partners"></div> /.item
+                <div class="item"><img src="images/logo/prtn-logo-2.png" alt="partners"></div> /.item
+                <div class="item"><img src="images/logo/prtn-logo-3.png" alt="partners"></div> /.item
+                <div class="item"><img src="images/logo/prtn-logo-4.png" alt="partners"></div> /.item
+            </div> /.owl-partners
+        </div> /.row
+    </div> /.container
+</div> /.partners-section*@
+
+
+<!-- Scroll Top Button -->
+<button class="scroll-top">
+    <i class="fa fa-angle-up" aria-hidden="true"></i>
+</button>
+
+<!-- Js File_________________________________ -->
+<!-- JS offline library -->
+<script src="js/jquery.2.2.3.min.js"></script>
+<!-- bootstrap js -->
+<script src="resource/bootstrap/js/bootstrap.min.js"></script>
+<!-- Owl carousel css-->
+<script src="resource/OwlCarousel/dist/owl.carousel.min.js"></script>
+<!-- wow Animation -->
+<script src="resource/WOW-master/dist/wow.js"></script>
+<!-- Google map js -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ8VrXgGZ3QSC-0XubNhuB2uKKCwqVaD0&callback=googleMap" type="text/javascript"></script> <!-- Gmap Helper -->
+<script src="resource/gmaps.min.js"></script>
+<!-- Validation -->
+<script type="text/javascript" src="resource/contact-form/validate.js"></script>
+<script type="text/javascript" src="resource/contact-form/jquery.form.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+<script type="text/javascript" src="js/map-script.js"></script>
+
+	 <!-- /.main-page-wrapper -->
+	</body>
+</html>
