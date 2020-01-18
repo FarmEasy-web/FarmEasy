@@ -2095,6 +2095,7 @@ gallary section
 }
 .contact-section .contact-single-list{
   padding-top: 85px;
+
 }
 .contact-section .contact-single-list ul li {
   font-size: 16px;
@@ -2172,8 +2173,8 @@ gallary section
   height: 50px;
   width: 185px;
   border: 1px solid #19c40c;
-  background-color: #19c40c;
-  color: #fff;
+ // background-color: #19c40c;
+ // color: #fff;
   margin-top: 35px;
 }
 .contact-us-section .buttonDiv button:hover{
