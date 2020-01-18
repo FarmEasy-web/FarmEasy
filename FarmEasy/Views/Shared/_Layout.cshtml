@@ -15,6 +15,7 @@
 
     <script src="https://kit.fontawesome.com/644b872e85.js" crossorigin="anonymous"></script>
     <style>
+      
         html,
         body {
             height: 100%;
@@ -40,31 +41,30 @@
         #footer {
             background-color: #f5f5f5;
         }
-         .main-container .theme-main-menu .logo>a
-         {
-             color:#121212;
-             height:100%;
-             margin-left:-100px;
-         }
+        
         .main-container .theme-main-menu .logo>a:hover
         {
+            
             color:#19c40c;
         }
+        .main-container .logo
+        {
+            margin:0px;
+            margin-left:30px;
+          padding: 35px 0;
+        }
+
         </style>
 </head>
 <body>
     <header>
         
-            <div class="address-list float_left">
-                <partial name="_LoginPartial" />
-            </div> <!-- /.address-list -->
-          
-       
-        <div class="main-container">                                
+        @*<partial name="_LoginPartial" />*@
+        <div class="main-container">
             <div class="container">
                 <div class="theme-main-menu">
                     <div class="logo float_left">
-                    @*    <a asp-controller="Home" asp-action="Index"><img src="~/images/logo/logo.png" alt="logo" class="img-responsive"></a>*@
+                        @*    <a asp-controller="Home" asp-action="Index"><img src="~/images/logo/logo.png" alt="logo" class="img-responsive"></a>*@
                         <a asp-controller="Home" asp-action="Index">FarmEasy</a>
                     </div> <!-- End of .logo -->
 
@@ -78,9 +78,9 @@
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-                        
+
                         <div class="collapse navbar-collapse float_left" id="navbar-collapse-1">
-                            
+
                             <ul class="nav navbar-nav">
                                 <li class="dropdown-holder">
                                     <a asp-action="Index">Home</a>
@@ -104,7 +104,7 @@
                                 <input type="text" placeholder="Search here.....">
                                 <button><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
-                        </div>  End of .search_option*@ 
+                        </div>  End of .search_option*@
                         <div class="clear_fix"></div>
                     </nav>
                     <div class="clear_fix"></div>

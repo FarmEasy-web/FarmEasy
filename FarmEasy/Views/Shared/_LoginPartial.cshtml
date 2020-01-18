@@ -2,8 +2,8 @@
 @inject SignInManager<UserMaster> SignInManager
 @inject UserManager<UserMaster> UserManager
 
-    
-    <ul class="nav navbar-nav">
+   
+    @*<ul class="nav navbar-nav">
         @if (SignInManager.IsSignedIn(User))
         {
             <li class="dropdown-holder">
@@ -24,4 +24,49 @@
                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
             </li>
         }
-    </ul>
+    </ul>*@
+    <div class="container">
+        <div class="address-list float_left">
+            @*<ul>
+            <li>
+                <div class="icon"><i class="flaticon-signs header-flat" aria-hidden="true"></i></div>
+                FoodFarm, W 35th St, New York
+            </li>
+            <li>
+                <div class="icon"><i class="flaticon-multimedia  header-flat" aria-hidden="true"></i></div>
+                info_floor@gmail.com
+            </li>
+        </ul>*@
+            <ul>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li>
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                    </li>
+                    <li>
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </li>
+                }
+            </ul>
+        </div> <!-- /.address-list -->
+
+        <div class="social-icon float_right">
+            <ul>
+                <li><a href="#" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="tran3s"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="tran3s"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+            </ul>
+        </div> <!-- /.social-icon -->
+    </div>

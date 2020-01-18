@@ -132,7 +132,7 @@ body {
   padding: 0;
   overflow-x:hidden !important;
 }
- h1,h2,h3,h4,h5,h6,p,ul { margin:0;padding: 0;}
+ h1,h2,h3,h4,h5,h6,p,ul {padding: 0;}
  h1,h2 { font-family: 'Pacifico', cursive; font-weight: 400;color: #121212;}
  h1 {font-size: 80px;}
  h2 {font-size: 38px;}
@@ -264,7 +264,7 @@ header .main-container.home-page-vs2{
 
 }
 .main-container .logo {
-  margin: 28px 0 10px 0;
+ 
 }
 .home-page-vs2 .theme-main-menu .collapse .navbar-nav>li>a {
   color: #fff;
