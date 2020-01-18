@@ -76,15 +76,22 @@ namespace FarmEasy
                 endpoints.MapRazorPages();
             });
             CreateRoles(serviceProvider).Wait();
+            CreateAdmin(serviceProvider).Wait();
         }
-
+        private async Task CreateAdmin(IServiceProvider serviceProvider)
+        {
+            var _userManager = serviceProvider.GetRequiredService<UserManager<UserMaster>>();
+            var _roleManager = serviceProvider.GetRequiredService<RoleManager<RoleMaster>>();
+            var user = new UserMaster { UserName = "administrator@gmail.com", Email = "administrator@gmail.com", FirstName = "Admin", LastName = "Admin",EmailConfirmed=true,IsDeleted=false, LockoutEnabled=true };
+            var userResult = await _userManager.CreateAsync(user, "Test@123");
+            var adminrole = await _roleManager.FindByNameAsync("Admin");
+            var userroleresult = await _userManager.AddToRoleAsync(user, adminrole.Name);
+        }
         private async Task CreateRoles(IServiceProvider serviceProvider)
         {
             var _roleManager = serviceProvider.GetRequiredService<RoleManager<RoleMaster>>();
-            var _userManager = serviceProvider.GetRequiredService<UserManager<UserMaster>>();
+           
 
-            var userResult=await _userManager.CreateAsync(new UserMaster { UserName="Admin",Email="administrator@gmail.com",FirstName="Admin",LastName="Admin" },"Admin@123");
-            
             string[] roleNames = {"Admin","Farmer","Laboratry"};
            
             foreach(var roleName in roleNames)

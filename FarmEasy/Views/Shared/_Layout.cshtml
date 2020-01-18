@@ -51,7 +51,7 @@
     <header>
         
         <div class="main-container">
-            <partial name="_LoginPartial" />
+            
             <div class="container">
                 <div class="theme-main-menu">
                     <div class="logo float_left">
@@ -71,18 +71,24 @@
                         </div>
                         
                         <div class="collapse navbar-collapse float_left" id="navbar-collapse-1">
-
+                            <partial name="_LoginPartial" />
                             <ul class="nav navbar-nav">
                                 <li class="dropdown-holder">
-                                    <a asp-action="Index">Home</a>                                    
+                                    <a asp-action="Index">Home</a>
                                 </li>
                                 <li class="dropdown-holder">
-                                    <a  asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                </li>                               
+                                    <a asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                                </li>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="dropdown-holder">
+                                        <a asp-controller="ManageUser" asp-action="Index">Manage User</a>
+                                    </li>
+                                }
                             </ul>
 
-                        </div>
 
+                        </div>
                         @*<div class="search_option float_right">
                             <button class="search tran3s dropdown-toggle" id="searchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i></button>
                             <form action="#" class="p_color_bg dropdown-menu" aria-labellea:hoverdby="searchDropdown">
