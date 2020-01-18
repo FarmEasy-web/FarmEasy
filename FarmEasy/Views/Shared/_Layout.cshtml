@@ -19,7 +19,10 @@
         body {
             height: 100%;
         }
-
+        .main-container .theme-main-menu .navbar-nav>li>a{
+            padding:35px 0;
+        }
+       
         /* Wrapper for page content to push down footer */
         .container {
             min-height: 85%;
@@ -40,6 +43,8 @@
          .main-container .theme-main-menu .logo>a
          {
              color:#121212;
+             height:100%;
+             margin-left:-100px;
          }
         .main-container .theme-main-menu .logo>a:hover
         {
@@ -50,13 +55,17 @@
 <body>
     <header>
         
-        <div class="main-container">
-            
+            <div class="address-list float_left">
+                <partial name="_LoginPartial" />
+            </div> <!-- /.address-list -->
+          
+       
+        <div class="main-container">                                
             <div class="container">
                 <div class="theme-main-menu">
                     <div class="logo float_left">
-                        @*<a asp-controller="Home" asp-action="Index"><img src="~/images/logo/logo.png" alt="logo" class="img-responsive"></a>*@
-                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">FarmEasy</a>
+                    @*    <a asp-controller="Home" asp-action="Index"><img src="~/images/logo/logo.png" alt="logo" class="img-responsive"></a>*@
+                        <a asp-controller="Home" asp-action="Index">FarmEasy</a>
                     </div> <!-- End of .logo -->
 
                     <nav class="navbar navbar-default float_right">
@@ -71,7 +80,7 @@
                         </div>
                         
                         <div class="collapse navbar-collapse float_left" id="navbar-collapse-1">
-                            <partial name="_LoginPartial" />
+                            
                             <ul class="nav navbar-nav">
                                 <li class="dropdown-holder">
                                     <a asp-action="Index">Home</a>
