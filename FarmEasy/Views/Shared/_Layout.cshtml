@@ -4,32 +4,132 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FarmEasy</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
+    <link rel="icon" type="imges/jpg" sizes="56x56" href="~/images/logo/fab-icon.jpg">
+
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="~/css/custom.css">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" href="~/css/responsive.css">
+
+    <script src="https://kit.fontawesome.com/644b872e85.js" crossorigin="anonymous"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        /* Wrapper for page content to push down footer */
+        .container {
+            min-height: 85%;
+            height: auto;
+            /* Negative indent footer by it's height */
+            /*margin: 0 auto -10px;*/
+        }
+
+        #push,
+        #footer {
+            /*height: 60px;*/
+            padding: 0;
+        }
+
+        #footer {
+            background-color: #f5f5f5;
+        }
+         .main-container .theme-main-menu .logo>a
+         {
+             color:#121212;
+         }
+        .main-container .theme-main-menu .logo>a:hover
+        {
+            color:#19c40c;
+        }
+        </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        
+        <div class="main-container">
+            <partial name="_LoginPartial" />
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FarmEasy</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="theme-main-menu">
+                    <div class="logo float_left">
+                        @*<a asp-controller="Home" asp-action="Index"><img src="~/images/logo/logo.png" alt="logo" class="img-responsive"></a>*@
+                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">FarmEasy</a>
+                    </div> <!-- End of .logo -->
+
+                    <nav class="navbar navbar-default float_right">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="collapse navbar-collapse float_left" id="navbar-collapse-1">
+
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown-holder">
+                                    <a asp-action="Index">Home</a>                                    
+                                </li>
+                                <li class="dropdown-holder">
+                                    <a  asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                </li>                               
+                            </ul>
+
+                        </div>
+
+                        @*<div class="search_option float_right">
+                            <button class="search tran3s dropdown-toggle" id="searchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <form action="#" class="p_color_bg dropdown-menu" aria-labellea:hoverdby="searchDropdown">
+                                <input type="text" placeholder="Search here.....">
+                                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>  End of .search_option*@ 
+                        <div class="clear_fix"></div>
+                    </nav>
+                    <div class="clear_fix"></div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
+
+
+
+
+
+
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FarmEasy</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+
+
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -41,9 +141,32 @@
             &copy; 2020 - FarmEasy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <!-- Js File_________________________________ -->
+    <!-- JS offline library -->
+    <script src="~/js/jquery.2.2.3.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/resource/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Camera js -->
+    <script src="~/resource/Camera-master/scripts/camera.min.js"></script>
+    <script src="~/resource/Camera-master/scripts/jquery.easing.1.3.js"></script>
+    <!-- Owl carousel css-->
+    <script src="~/resource/OwlCarousel/dist/owl.carousel.min.js"></script>
+    <!-- js count to -->
+    <script type="text/javascript" src="~/resource/jquery.appear.js"></script>
+    <script type="text/javascript" src="~/resource/jquery.countTo.js"></script>
+    <!-- mixitUp -->
+    <script type="text/javascript" src="~/resource/jquery.mixitup.min.js"></script>
+    <!-- fancy box -->
+    <script type="text/javascript" src="~/resource/fancybox/dist/jquery.fancybox.min.js"></script>
+    <!-- wow Animation -->
+    <script src="~/resource/WOW-master/dist/wow.js"></script>
+    <!-- Custom Js -->
+    <script src="~/js/custom.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>

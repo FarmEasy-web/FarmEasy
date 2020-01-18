@@ -47,6 +47,25 @@ namespace FarmEasy.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name = "First Name")]
+            [RegularExpression("^([a-zA-Z])", ErrorMessage = "Invalid First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [RegularExpression("^([a-zA-Z])$", ErrorMessage = "Invalid Last Name")]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Required]
+            [DataType(DataType.PhoneNumber)]
+            [Display(Name = "Contact Number")]
+            public string ContactNo { get; set; }
+
+            [Required]
+            [RegularExpression("^([a-zA-Z])$", ErrorMessage = "Invalid City")]
+            public string City { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
