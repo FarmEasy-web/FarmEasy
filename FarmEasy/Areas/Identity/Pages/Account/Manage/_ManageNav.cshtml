@@ -6,7 +6,11 @@
 <style>
     .nav-pills .nav-link{border-radius:.25rem}
     .nav-pills .nav-link.active,.nav-pills .show>.nav-link{color:#fff;background-color:#007bff}
-    .flex-column{-ms-flex-direction:column!important;flex-direction:column!important}
+    .flex-column{-ms-flex-direction:column!important;flex-direction:column!important; display:flex;}
+    .col-md-3
+    {
+        margin-top:10px;
+    }
 </style>
 <ul class="nav nav-pills flex-column">
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>

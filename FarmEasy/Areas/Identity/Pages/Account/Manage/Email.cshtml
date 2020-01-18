@@ -15,12 +15,12 @@
                 <label asp-for="Email"></label>
                 @if (Model.IsEmailConfirmed)
                 {
-                    <div class="input-group">
+                   
                         <input asp-for="Email" class="form-control" disabled />
                         <div class="input-group-append">
                             <span class="input-group-text text-success font-weight-bold">✓</span>
                         </div>
-                    </div>
+                    
                 }
                  else
                 {
