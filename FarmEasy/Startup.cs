@@ -44,6 +44,18 @@ namespace FarmEasy
             services.AddDefaultIdentity<UserMaster>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<RoleMaster>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddSingleton<IEmailSender,EmailSender>();
+            services.AddAuthentication()
+                .AddGoogle(options=>
+                {
+                    IConfigurationSection googleAuthSection = Configuration.GetSection("Authentication:Google");
+                    options.ClientId = googleAuthSection["ClientId"];
+                    options.ClientSecret = googleAuthSection["ClientSecret"];
+                })                
+                .AddFacebook(options=>{
+                    IConfigurationSection fbAuthSection = Configuration.GetSection("Authentication:Facebook");
+                    options.AppId = fbAuthSection["AppId"];
+                    options.AppSecret = fbAuthSection["AppSecret"];
+                });
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -77,8 +89,8 @@ namespace FarmEasy
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-      //      CreateRoles(serviceProvider).Wait();
-     //       CreateAdmin(serviceProvider).Wait();
+            CreateRoles(serviceProvider).Wait();
+            CreateAdmin(serviceProvider).Wait();
         }
         private async Task CreateAdmin(IServiceProvider serviceProvider)
         {
