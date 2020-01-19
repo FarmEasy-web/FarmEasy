@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FarmEasy.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity.UI.Services;
 //using FarmEasy.Areas.Identity.Pages.Account;
 
 
@@ -42,6 +43,7 @@ namespace FarmEasy
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<UserMaster>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<RoleMaster>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddSingleton<IEmailSender,EmailSender>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
