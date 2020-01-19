@@ -16,6 +16,7 @@ namespace FarmEasy.Data
 
         public DbSet<UserMaster> UserMasters { get; set; }
         public DbSet<RoleMaster> RoleMasters { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
 
     }
 }
