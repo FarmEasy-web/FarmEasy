@@ -59,7 +59,7 @@ namespace FarmEasy.Areas.Identity.Pages.Account
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Thank you for confirming your email change.";
-            return Page();
+            return RedirectToPage("./Manage/Index");
         }
     }
 }
