@@ -29,7 +29,7 @@
             min-height: 85%;
             height: auto;
             /* Negative indent footer by it's height */
-            /*margin: 0 auto -10px;*/
+            margin: 0 auto -20px;
             margin:0 100px;
         }
 
@@ -87,7 +87,7 @@
 
                             <ul class="nav navbar-nav">
                                 <li class="dropdown-holder">
-                                    <a asp-action="Index">Home</a>
+                                    <a asp-controller="Home" asp-action="Index">Home</a>
                                 </li>
                                 <li class="dropdown-holder">
                                     <a asp-controller="ContactUs" asp-action="Create">Contact Us</a>
@@ -157,9 +157,36 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - FarmEasy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="col-xt-12">
+                <div class="single-list1">
+                    <div class="contact-single-list">
+                        <div class="contact">
+                            <div>
+                                <a href="#" class=""><i class="fa fa-phone" aria-hidden="true"></i> ( +91 ) 9727007021</a>
+                            </div>
+                            <div>
+                                <a href="#" class=""><i class="fa fa-envelope-o" aria-hidden="true"></i>farmeasy242573@gmail.com</a>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="#" class=""><i class="fa fa-map-marker" aria-hidden="true"></i>123 New Naroda,Ahmedabad</a>
+                        </div>
+                        <div class="social-icon">
+                            <h6>Social touch</h6>
+                            <ul>
+                                <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#" class="hvr-shutter-out-horizontal-three"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div> <!-- /.social-icon -->
+                        2020 - FarmEasy - <a asp-area="" asp-controller="Home" asp-action="Index">FarmEasy</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+
+</footer>
 
 
     <!-- Js File_________________________________ -->

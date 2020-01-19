@@ -75,8 +75,8 @@ namespace FarmEasy
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            CreateRoles(serviceProvider).Wait();
-            CreateAdmin(serviceProvider).Wait();
+      //      CreateRoles(serviceProvider).Wait();
+     //       CreateAdmin(serviceProvider).Wait();
         }
         private async Task CreateAdmin(IServiceProvider serviceProvider)
         {

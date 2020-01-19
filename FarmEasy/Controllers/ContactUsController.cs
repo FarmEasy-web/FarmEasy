@@ -42,7 +42,7 @@ namespace FarmEasy.Controllers
 
             return View(contactUs);
         }
-
+        [Route("ContactUs")]
         // GET: ContactUs/Create
         public IActionResult Create()
         {
