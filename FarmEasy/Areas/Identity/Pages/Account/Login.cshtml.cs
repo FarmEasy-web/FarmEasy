@@ -80,28 +80,45 @@ namespace FarmEasy.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+
+                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
+                else if (result.RequiresTwoFactor)
                 {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                 }
-                if (result.IsLockedOut)
+
+                else if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt to Your Account Is Locked");
                     return RedirectToPage("./Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
-                }
-            }
+                    if (result.IsNotAllowed)
+                    {
+                        if (!result.Succeeded)
+                        {
+                            ModelState.AddModelError(string.Empty, "You Need To Confirm Your Email Address");
+                            return Page();
+                        }
 
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Please Check Your Email And Password");
+                        return Page();
+                    }
+
+                }
+            }    
+            
             // If we got this far, something failed, redisplay form
             return Page();
         }
