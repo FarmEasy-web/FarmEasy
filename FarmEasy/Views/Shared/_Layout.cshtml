@@ -102,7 +102,7 @@
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <li class="dropdown-holder">
-                                        <a asp-controller="ManageUser" asp-action="Index">Manage User</a>
+                                        <a asp-controller="Users" asp-action="Index">Manage User</a>
                                     </li>
                                 }
                             </ul>
@@ -180,12 +180,12 @@
                         </div>
                         <div class="social-icon">
                             <h6>Social touch</h6>
-                            <ul>
-                                <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="hvr-shutter-out-horizontal-three"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                            </ul>
+                            @*<ul>*@
+                                <a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="#" class=" hvr-shutter-out-horizontal-three"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#" class="hvr-shutter-out-horizontal-three"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            @*</ul>*@
                         </div> <!-- /.social-icon -->
                         2020 - FarmEasy - <a asp-area="" asp-controller="Home" asp-action="Index">FarmEasy</a>
                     </div>
