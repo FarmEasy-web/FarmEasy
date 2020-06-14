@@ -11,5 +11,6 @@ namespace FarmEasy.ViewModel.CropDetails
         public FarmEasy.Models.CropDetails CropDetails { get; set; }
         public int[] SoilTypeId { get; set; }
         public List<SoilType> SoilTypes { get; set; }
+        public bool ForEdit { get; set; }
     }
 }

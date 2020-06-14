@@ -1,4 +1,4 @@
-﻿@model FarmEasy.Models.CropDetails
+﻿@model FarmEasy.ViewModel.CropDetails.CreateCropViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -10,27 +10,42 @@
     <h4>CropDetails</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Temperature_Min)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CropDetails.Temperature_Min)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Temperature_Min)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CropDetails.Temperature_Min)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Temperature_Max)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CropDetails.Temperature_Max)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Temperature_Max)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CropDetails.Temperature_Max)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CropName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CropDetails.CropName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CropName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CropDetails.CropName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SoilTypes)
+        </dt>
+        <dd class="col-sm-10">
+            @{int i = 0;}
+            @foreach (var st in Model.SoilTypes)
+            {
+                <label>@st.SoilName </label>
+                i++;
+                if (Model.SoilTypes.Count() != i)
+                {
+                    <span>,</span>
+                }
+            }
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.CropDetails.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
