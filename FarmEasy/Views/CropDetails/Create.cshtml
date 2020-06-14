@@ -1,0 +1,40 @@
+﻿@model FarmEasy.Models.CropDetails
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CropDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Temperature_Min" class="control-label"></label>
+                <input asp-for="Temperature_Min" class="form-control" />
+                <span asp-validation-for="Temperature_Min" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Temperature_Max" class="control-label"></label>
+                <input asp-for="Temperature_Max" class="form-control" />
+                <span asp-validation-for="Temperature_Max" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CropName" class="control-label"></label>
+                <input asp-for="CropName" class="form-control" />
+                <span asp-validation-for="CropName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
