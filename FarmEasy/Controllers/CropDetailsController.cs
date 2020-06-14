@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FarmEasy.Data;
 using FarmEasy.Models;
+using FarmEasy.ViewModel.CropDetails;
 
 namespace FarmEasy.Controllers
 {
@@ -39,14 +40,20 @@ namespace FarmEasy.Controllers
             {
                 return NotFound();
             }
+            var model = new CreateCropViewModel();
+            model.CropDetails = cropDetails;
+            model.SoilTypes = await _context.SoilTypes.ToListAsync();
+            model.SoilTypeId = await _context.CropSoilMappings.Where(x => x.CropId == cropDetails.Id).Select(y => y.SoilId).ToArrayAsync();
 
-            return View(cropDetails);
+            return View(model);
         }
 
         // GET: CropDetails/Create
         public IActionResult Create()
         {
-            return View();
+            var model = new CreateCropViewModel();
+            model.SoilTypes = _context.SoilTypes.ToList();
+            return View(model);
         }
 
         // POST: CropDetails/Create
@@ -54,15 +61,22 @@ namespace FarmEasy.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Temperature_Min,Temperature_Max,CropName")] CropDetails cropDetails)
+        public async Task<IActionResult> Create(CreateCropViewModel cropViewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cropDetails);
+                await  _context.CropDetails.AddAsync(cropViewModel.CropDetails);
+                await _context.SaveChangesAsync();
+                foreach (var sT in cropViewModel.SoilTypeId)
+                {
+                    await _context.CropSoilMappings.AddAsync(new CropSoilMapping() { CropId = cropViewModel.CropDetails.Id, SoilId = sT });
+                    await _context.SaveChangesAsync();
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cropDetails);
+            ViewBag.CropType = await _context.SoilTypes.ToListAsync();
+            return View(cropViewModel);
         }
 
         // GET: CropDetails/Edit/5
@@ -78,7 +92,11 @@ namespace FarmEasy.Controllers
             {
                 return NotFound();
             }
-            return View(cropDetails);
+            var model = new CreateCropViewModel();
+            model.CropDetails = cropDetails;
+            model.SoilTypes = await _context.SoilTypes.ToListAsync();
+            model.SoilTypeId = await _context.CropSoilMappings.Where(x => x.CropId == cropDetails.Id).Select(y => y.SoilId).ToArrayAsync();
+            return View(model);
         }
 
         // POST: CropDetails/Edit/5
@@ -86,9 +104,9 @@ namespace FarmEasy.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Temperature_Min,Temperature_Max,CropName")] CropDetails cropDetails)
+        public async Task<IActionResult> Edit(int id,CreateCropViewModel model)
         {
-            if (id != cropDetails.Id)
+            if (id != model.CropDetails.Id)
             {
                 return NotFound();
             }
@@ -97,12 +115,19 @@ namespace FarmEasy.Controllers
             {
                 try
                 {
-                    _context.Update(cropDetails);
+                    _context.Update(model.CropDetails);
                     await _context.SaveChangesAsync();
+                    var cropSoil = await _context.CropSoilMappings.Where(x => x.CropId == model.CropDetails.Id).ToListAsync();
+                    _context.CropSoilMappings.RemoveRange(cropSoil);
+                    await _context.SaveChangesAsync();
+                    foreach(var sT in model.SoilTypeId)
+                    {
+                       await _context.CropSoilMappings.AddAsync(new CropSoilMapping() { CropId = model.CropDetails.Id, SoilId = sT });
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CropDetailsExists(cropDetails.Id))
+                    if (!CropDetailsExists(model.CropDetails.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +138,7 @@ namespace FarmEasy.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cropDetails);
+            return View(model);
         }
 
         // GET: CropDetails/Delete/5
