@@ -10,6 +10,8 @@
     <Compile Remove="Data\Migrations\20200111071007_Add_UserMaster_In_AspNetUser.Designer.cs" />
     <Compile Remove="Data\Migrations\20200111071250_temp.cs" />
     <Compile Remove="Data\Migrations\20200111071250_temp.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200614133743_add_city_table.cs" />
+    <Compile Remove="Data\Migrations\20200614133743_add_city_table.Designer.cs" />
   </ItemGroup>
 
 

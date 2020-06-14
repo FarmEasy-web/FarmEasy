@@ -20,6 +20,6 @@ namespace FarmEasy.Data
         public DbSet<SoilType> SoilTypes { get; set; }
         public DbSet<CropDetails> CropDetails { get; set; }
         public DbSet<CropSoilMapping> CropSoilMappings { get; set; }
-
+        public DbSet<City> Cities { get; set; }
     }
 }
