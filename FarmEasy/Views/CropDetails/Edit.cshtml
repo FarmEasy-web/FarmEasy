@@ -1,4 +1,4 @@
-﻿@model FarmEasy.Models.CropDetails
+﻿@model FarmEasy.ViewModel.CropDetails.CreateCropViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,21 +12,26 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Temperature_Min" class="control-label"></label>
-                <input asp-for="Temperature_Min" class="form-control" />
-                <span asp-validation-for="Temperature_Min" class="text-danger"></span>
+            <input type="hidden" asp-for="CropDetails.Id" />
+                   <div class="form-group">
+                <label asp-for="CropDetails.CropName" class="control-label"></label>
+                <input asp-for="CropDetails.CropName" class="form-control" />
+                <span asp-validation-for="CropDetails.CropName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Temperature_Max" class="control-label"></label>
-                <input asp-for="Temperature_Max" class="form-control" />
-                <span asp-validation-for="Temperature_Max" class="text-danger"></span>
+                <label asp-for="CropDetails.Temperature_Max" class="control-label"></label>
+                <input asp-for="CropDetails.Temperature_Min" class="form-control" />
+                <span asp-validation-for="CropDetails.Temperature_Min" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CropName" class="control-label"></label>
-                <input asp-for="CropName" class="form-control" />
-                <span asp-validation-for="CropName" class="text-danger"></span>
+                <label asp-for="CropDetails.Temperature_Max" class="control-label"></label>
+                <input asp-for="CropDetails.Temperature_Max" class="form-control" />
+                <span asp-validation-for="CropDetails.Temperature_Max" class="text-danger"></span>
+            </div>     
+            <div class="from-group" style="margin-bottom: 15px;">
+                <label class="control-label">Soil Type</label>
+                @Html.DropDownListFor(x=>x.SoilTypeId,new SelectList(Model.SoilTypes,"Id", "SoilName",Model.SoilTypeId),new {@class="form-control selectpicker",@multiple="multiple" })
+                <span asp-validation-for="SoilTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

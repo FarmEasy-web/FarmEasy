@@ -41,9 +41,11 @@ namespace FarmEasy.Controllers
                 return NotFound();
             }
             var model = new CreateCropViewModel();
-            model.CropDetails = cropDetails;
-            model.SoilTypes = await _context.SoilTypes.ToListAsync();
-            model.SoilTypeId = await _context.CropSoilMappings.Where(x => x.CropId == cropDetails.Id).Select(y => y.SoilId).ToArrayAsync();
+            model.CropDetails = cropDetails;            
+            model.SoilTypes= await (from soilType in _context.SoilTypes
+                                    join soilTypeMapping in _context.CropSoilMappings on soilType.Id equals soilTypeMapping.SoilId
+                                    where soilTypeMapping.CropId==cropDetails.Id
+                                    select soilType).ToListAsync();            
 
             return View(model);
         }
@@ -95,7 +97,7 @@ namespace FarmEasy.Controllers
             var model = new CreateCropViewModel();
             model.CropDetails = cropDetails;
             model.SoilTypes = await _context.SoilTypes.ToListAsync();
-            model.SoilTypeId = await _context.CropSoilMappings.Where(x => x.CropId == cropDetails.Id).Select(y => y.SoilId).ToArrayAsync();
+            model.SoilTypeId = await _context.CropSoilMappings.Where(x => x.CropId == cropDetails.Id).Select(y => y.SoilId).ToArrayAsync();            
             return View(model);
         }
 
@@ -105,7 +107,7 @@ namespace FarmEasy.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id,CreateCropViewModel model)
-        {
+        {            
             if (id != model.CropDetails.Id)
             {
                 return NotFound();
@@ -123,6 +125,7 @@ namespace FarmEasy.Controllers
                     foreach(var sT in model.SoilTypeId)
                     {
                        await _context.CropSoilMappings.AddAsync(new CropSoilMapping() { CropId = model.CropDetails.Id, SoilId = sT });
+                       await _context.SaveChangesAsync();
                     }
                 }
                 catch (DbUpdateConcurrencyException)
