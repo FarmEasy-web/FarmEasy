@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FarmEasy.Models.CropDetails>
+﻿@model IEnumerable<FarmEasy.Models.SoilType>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,13 +15,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Temperature_Min)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Temperature_Max)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CropName)
+                @Html.DisplayNameFor(model => model.SoilName)
             </th>
             <th></th>
         </tr>
@@ -31,13 +25,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Temperature_Min)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Temperature_Max)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CropName)
+                    @Html.DisplayFor(modelItem => item.SoilName)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
