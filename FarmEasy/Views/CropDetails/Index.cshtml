@@ -4,11 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h3>Crop Details</h3>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h2>Index</h2>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
