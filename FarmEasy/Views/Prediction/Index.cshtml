@@ -18,7 +18,7 @@
         </div>
         <div class="col-sm-4">
             <label class="control-label">Soil Type : </label>
-            <div class="form-group" style="margin:0 1em"}>
+            <div class="form-group" style="margin:0 1em">
                 @Html.DropDownListFor(x => x.SoilTypeId, new SelectList(Model.SoilTypes, "Id", "SoilName"), "-Please Select Soil -", new { @class = "form-control selectpicker", @style = "margin:0 1em" })
                 <span asp-validation-for="SoilTypes" class="text-danger"></span>
             </div>
