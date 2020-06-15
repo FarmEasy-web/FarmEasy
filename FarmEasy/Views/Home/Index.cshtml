@@ -56,9 +56,9 @@ img {vertical-align: middle;}
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 5.0s;
+  -webkit-animation-duration: 2.5s;
   animation-name: fade;
-  animation-duration:5.0s;
+  animation-duration:2.5s;
 }
 
 @@-webkit-keyframes fade {
@@ -78,7 +78,7 @@ img {vertical-align: middle;}
     </style>
     <div class="slideshow-container">
 
-        <div class="mySlides fade" style="display:block">
+        <div class="mySlides fade">
             @*<div class="numbertext">1 / 3</div>*@
             <img src="~/images/gallary/FarmEasy/Testing1.jpg" style="width:1000px;height:677px;">
             @*<div class="text">Caption Text</div>*@
@@ -86,13 +86,13 @@ img {vertical-align: middle;}
 
         <div class="mySlides fade">
             @*<div class="numbertext">2 / 3</div>*@
-            <img src="~/images/gallary/eso1322a.jpg" style="width:1000px;height:677px;">
+            <img src="~/images/gallary/FarmEasy/2654306.jpg" style="width:1000px;height:677px;">
             @*<div class="text">Caption Two</div>*@
         </div>
 
         <div class="mySlides fade">
             @*<div class="numbertext">3 / 3</div>*@
-            <img src="~/images/gallary/eso0846a.jpg" style="width:1000px;height:677px;">
+            <img src="~/images/gallary/FarmEasy/eduardo-prim-3u51-uLQICc-unsplash.jpg" style="width:1000px;height:677px;">
             @*<div class="text">Caption Three</div>*@
         </div>
 
@@ -105,7 +105,7 @@ img {vertical-align: middle;}
         <span class="dot"></span>
     </div>
 
-    @*<script>
+    <script>
 var slideIndex = 0;
 showSlides();
 
@@ -125,7 +125,7 @@ function showSlides() {
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 10000); // Change image every 2 seconds
 }
-    </script>*@
+    </script>
 
 @*</body>
 </html>*@
