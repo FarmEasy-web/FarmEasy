@@ -11,5 +11,6 @@ namespace FarmEasy.Models
         [Key]
         public int Id { get; set; }
         public string SoilName { get; set; }
+        public string SoilDetails { get; set; }
     }
 }
