@@ -11,5 +11,6 @@ namespace FarmEasy.Models
         [Key]
         public int Id { get; set; }
         public string CityName { get; set; }
+        public string PinCode { get; set; }
     }
 }

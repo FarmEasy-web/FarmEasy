@@ -6,6 +6,7 @@ using FarmEasy.Data;
 using FarmEasy.ViewModel.Prediction;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Utilities.Helper;
 
 namespace FarmEasy.Controllers
 {
@@ -23,6 +24,14 @@ namespace FarmEasy.Controllers
             model.City = await _context.Cities.ToListAsync();
             model.SoilTypes = await _context.SoilTypes.ToListAsync();
             return View(model);
+        }
+        public async Task<IActionResult> Prediction(PredictionViewModel model)
+        {            
+            model.City = await _context.Cities.ToListAsync();
+            model.SoilTypes = await _context.SoilTypes.ToListAsync();
+            var city = await _context.Cities.Where(x => x.Id == model.CityId).FirstOrDefaultAsync();
+            var temprature =await PredictionWeather.Predict(city.CityName);
+            return View("Index",model);
         }
     }
 }

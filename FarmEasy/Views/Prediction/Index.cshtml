@@ -5,24 +5,29 @@
 
 <h4>Prediction</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label class="control-label">City</label>
-                @Html.DropDownListFor(x => x.CityId,new SelectList(Model.City, "Id", "CityName"), "-Please Select City -", new { @class = "form-control selectpicker"})
+<div class="row form-inline" style="padding-left: 0;">
+    
+    <form asp-action="Prediction">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-sm-4">
+            <label class="control-label">City : </label>
+            <div class="form-group" style="margin:0 1em">
+                @Html.DropDownListFor(x => x.CityId, new SelectList(Model.City, "Id", "CityName"), "-Please Select City -", new { @class = "form-control selectpicker" })
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label class="control-label">Soil Type</label>
-                @Html.DropDownListFor(x => x.SoilTypeId, new SelectList(Model.SoilTypes, "Id", "SoilName"), "-Please Select Soil -", new { @class = "form-control selectpicker"})
+        </div>
+        <div class="col-sm-4">
+            <label class="control-label">Soil Type : </label>
+            <div class="form-group" style="margin:0 1em"}>
+                @Html.DropDownListFor(x => x.SoilTypeId, new SelectList(Model.SoilTypes, "Id", "SoilName"), "-Please Select Soil -", new { @class = "form-control selectpicker", @style = "margin:0 1em" })
                 <span asp-validation-for="SoilTypes" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-sm-4">
             <div class="form-group">
                 <input type="submit" value="Search" class="btn btn-primary" />
             </div>
-        </form>
-    </div>
+        </div>
+    </form>    
 </div>
 
