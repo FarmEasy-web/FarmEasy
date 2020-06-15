@@ -28,6 +28,10 @@ namespace FarmEasy.Controllers
         }
         public async Task<IActionResult> Prediction(PredictionViewModel model)
         {
+            if (model.SoilTypeId == 0 || model.CityId == 0)
+            {
+                return RedirectToAction("Index");
+            }
             model.City = await _context.Cities.ToListAsync();
             model.SoilTypes = await _context.SoilTypes.ToListAsync();
             var city = await _context.Cities.Where(x => x.Id == model.CityId).FirstOrDefaultAsync();
