@@ -29,5 +29,24 @@
             </div>
         </div>
     </form>    
+
+
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Predicted Crop</td>                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var pc in Model.Crops)
+                {
+                    <tr>
+                        <td>@pc.CropName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 

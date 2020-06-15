@@ -29,7 +29,7 @@ namespace Utilities
                 Client.BaseAddress = new Uri(uriString: uri);
                 var response = await Client.GetAsync(requestUri: uri);
                 var responseString = await response.Content.ReadAsStringAsync();
-                responseString = responseString.Replace(city, "City");
+                responseString = responseString.Replace(city+",GJ,India", "City");
                 var weatherData = JsonConvert.DeserializeObject<WeatherData>(responseString);
                 return weatherData.Locations.City.Values.ToList();
             }

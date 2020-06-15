@@ -52,7 +52,7 @@ namespace Utilities.Helper
                 windowSize: 7,
                 seriesLength: 30,
                 trainSize: 365,
-                horizon: 50,
+                horizon: 1,
                 confidenceLevel: 0.95f,
                 confidenceLowerBoundColumn: "LowerValue",
                 confidenceUpperBoundColumn: "UpperValue");
