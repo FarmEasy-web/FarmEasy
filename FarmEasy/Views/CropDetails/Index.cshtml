@@ -1,0 +1,53 @@
+﻿@model IEnumerable<FarmEasy.Models.CropDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CropName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temperature_Min)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temperature_Max)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temperature_Min)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temperature_Max)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id"> Details </a>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id"> Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

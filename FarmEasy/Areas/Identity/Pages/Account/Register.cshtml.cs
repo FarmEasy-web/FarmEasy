@@ -103,7 +103,7 @@ namespace FarmEasy.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var userlist =await _context.UserMasters.Where(x=>x.IsDeleted==false).ToListAsync();
-                var user = new UserMaster { UserName = Input.Email, Email = Input.Email };
+                var user = new UserMaster { UserName = Input.Email, Email = Input.Email,FirstName=Input.FirstName,LastName=Input.LastName,ContactNo = Input.ContactNo,City = Input.City };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 
                 if (userlist.Count==0)

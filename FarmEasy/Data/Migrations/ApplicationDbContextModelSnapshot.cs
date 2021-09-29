@@ -19,6 +19,24 @@ namespace FarmEasy.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("FarmEasy.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PinCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("FarmEasy.Models.ContactUs", b =>
                 {
                     b.Property<int>("ContactUsId")
@@ -44,6 +62,63 @@ namespace FarmEasy.Data.Migrations
                     b.HasKey("ContactUsId");
 
                     b.ToTable("ContactUs");
+                });
+
+            modelBuilder.Entity("FarmEasy.Models.CropDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CropName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Temperature_Max")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Temperature_Min")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CropDetails");
+                });
+
+            modelBuilder.Entity("FarmEasy.Models.CropSoilMapping", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CropId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SoilId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CropSoilMappings");
+                });
+
+            modelBuilder.Entity("FarmEasy.Models.SoilType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("SoilDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SoilName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SoilTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

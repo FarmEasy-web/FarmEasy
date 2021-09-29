@@ -10,6 +10,8 @@
     <Compile Remove="Data\Migrations\20200111071007_Add_UserMaster_In_AspNetUser.Designer.cs" />
     <Compile Remove="Data\Migrations\20200111071250_temp.cs" />
     <Compile Remove="Data\Migrations\20200111071250_temp.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200614133743_add_city_table.cs" />
+    <Compile Remove="Data\Migrations\20200614133743_add_city_table.Designer.cs" />
   </ItemGroup>
 
 
@@ -23,12 +25,18 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
+    <PackageReference Include="Microsoft.ML.TimeSeries" Version="1.5.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
   </ItemGroup>
 
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
 </Project>

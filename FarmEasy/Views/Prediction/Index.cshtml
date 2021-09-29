@@ -1,0 +1,94 @@
+﻿@model FarmEasy.ViewModel.Prediction.PredictionViewModel
+@{
+    ViewData["Title"] = "Prediction";
+}
+@section Scripts{
+    <script type="text/javascript">
+        function clearFilter() {
+            $('.selectpicker').selectpicker('val', '');
+        }
+    </script>
+}
+<h4>Prediction</h4>
+<hr />
+<div class="row form-inline" style="padding-left: 0;">
+
+    <form asp-action="Prediction">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-sm-4">
+            <label class="control-label">City : </label>
+            <div class="form-group" style="margin:0 1em">
+                @Html.DropDownListFor(x => x.CityId, new SelectList(Model.City, "Id", "CityName"), "-Please Select City -", new { @class = "form-control selectpicker City" })
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <label class="control-label">Soil Type : </label>
+            <div class="form-group" style="margin:0 1em">
+                @Html.DropDownListFor(x => x.SoilTypeId, new SelectList(Model.SoilTypes, "Id", "SoilName"), "-Please Select Soil -", new { @class = "form-control selectpicker SoilType", @style = "margin:0 1em" })
+                <span asp-validation-for="SoilTypes" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <button href="#" onclick="clearFilter()" style="margin-right: 1em;" class="btn btn-primary">Reset</button>
+            </div>
+        </div>
+        @*<div class="col-sm-4">
+                <div class="form-group">
+                    <input type="reset" value="Reset" class="btn btn-primary" />
+                </div>
+            </div>*@
+        @*<div class="d-inline-flex flex-row align-items-center">
+                <button class="btn btn-secondary" style="margin-right: 1em;" onclick="clearFilter()">Clear</button>
+            </div>*@
+    </form>
+
+    <hr />
+    <br />
+    <div class="row">
+        @{
+            if (Model != null)
+            {
+                if (Model.Crops.Count() > 0)
+                {
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Predicted Crop.....</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @{int i = 0;}
+                                    @foreach (var pc in Model.Crops)
+                                    {
+                                        <label>@pc.CropName </label>
+                                        i++;
+                                        if (Model.Crops.Count() != i)
+                                        {
+                                            <span>,</span>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="col-lg-12">
+                        <div id="noMatch" class="alert alert-info alert-dismissible">No Predicted Data have been Found.</div>
+                    </div>
+                }
+            }
+
+        }
+    </div>
+</div>
+

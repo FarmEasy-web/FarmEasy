@@ -1,0 +1,43 @@
+﻿@model FarmEasy.ViewModel.CropDetails.CreateCropViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>CropDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CropDetails.CropName" class="control-label"></label>
+                <input asp-for="CropDetails.CropName" class="form-control" />
+                <span asp-validation-for="CropDetails.CropName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CropDetails.Temperature_Min" class="control-label"></label>
+                <input asp-for="CropDetails.Temperature_Min" class="form-control" />
+                <span asp-validation-for="CropDetails.Temperature_Min" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CropDetails.Temperature_Max" class="control-label"></label>
+                <input asp-for="CropDetails.Temperature_Max" class="form-control" />
+                <span asp-validation-for="CropDetails.Temperature_Max" class="text-danger"></span>
+            </div>       
+            <div class="from-group" style="margin-bottom: 15px;">
+                <label class="control-label">Soil Type</label>
+                @Html.DropDownListFor(x=>x.SoilTypeId,new SelectList(Model.SoilTypes,"Id", "SoilName"),new {@class="form-control selectpicker",@multiple="multiple" })
+                <span asp-validation-for="SoilTypes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
